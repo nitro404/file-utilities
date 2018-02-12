@@ -1,0 +1,34 @@
+{
+  "name": "file-utilities",
+  "version": "1.0.0",
+  "description": "A collection of useful file helper functions.",
+  "main": "src/file-utilities.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitro404/file-utilities.git"
+  },
+  "keywords": [
+    "file",
+    "information",
+    "helper",
+    "utility",
+    "utilities",
+    "function"
+  ],
+  "author": {
+    "name": "Kevin Scroggins"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nitro404/file-utilities/issues"
+  },
+  "homepage": "https://github.com/nitro404/file-utilities#readme",
+  "dependencies": {
+    "extra-utilities": "^1.1.0",
+    "fs-extra": "^5.0.0",
+    "md5-file": "^3.2.3"
+  }
+}
