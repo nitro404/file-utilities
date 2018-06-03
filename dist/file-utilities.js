@@ -17,18 +17,6 @@ fileUtilities.getFileInformation = function(filePath, callback) {
 	return async.waterfall(
 		[
 			function(callback) {
-				return fs.exists(
-					filePath,
-					function(exists) {
-						return callback(null, exists);
-					}
-				);
-			},
-			function(exists, callback) {
-				if(!exists) {
-					return callback(null, null);
-				}
-
 				return fs.stat(
 					filePath,
 					function(error, stats) {
@@ -41,10 +29,6 @@ fileUtilities.getFileInformation = function(filePath, callback) {
 				);
 			},
 			function(fileSize, callback) {
-				if(utilities.isInvalid(fileSize)) {
-					return callback(null, null, null);
-				}
-
 				return md5File(
 					filePath,
 					function(error, hash) {
@@ -60,10 +44,6 @@ fileUtilities.getFileInformation = function(filePath, callback) {
 		function(error, fileSize, hash) {
 			if(error) {
 				return callback(error);
-			}
-
-			if(utilities.isInvalid(fileSize) || utilities.isInvalid(hash)) {
-				return callback(null, null);
 			}
 
 			return callback(null, {
