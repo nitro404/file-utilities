@@ -37,7 +37,7 @@ describe("File Utilities", function() {
 
 		it("should correctly retrieve the file size and md5 hash for a file", function(callback) {
 			fileUtilities.getFileInformation(
-				path.join(__dirname, "/data/test.json"),
+				path.join(__dirname, "data/test.json"),
 				function(error, info) {
 					expect(error).to.equal(null);
 					expect(utilities.isObjectStrict(info)).to.equal(true);
@@ -51,7 +51,7 @@ describe("File Utilities", function() {
 
 		it("should return an error for files that do not exist", function(callback) {
 			fileUtilities.getFileInformation(
-				path.join(__dirname, "/data/missing.json"),
+				path.join(__dirname, "data/missing.json"),
 				function(error, info) {
 					expect(error).to.not.equal(null);
 					expect(info).to.be.undefined;
@@ -63,7 +63,7 @@ describe("File Utilities", function() {
 
 		it("should return an error for directories", function(callback) {
 			fileUtilities.getFileInformation(
-				path.join(__dirname, "/data"),
+				path.join(__dirname, "data"),
 				function(error, info) {
 					expect(error).to.not.equal(null);
 					expect(info).to.be.undefined;
@@ -71,6 +71,17 @@ describe("File Utilities", function() {
 					return callback();
 				}
 			);
+		});
+	});
+
+	describe("isFileSystemCaseSensitive", function() {
+		it("should be a function", function() {
+			expect(utilities.isFunction(fileUtilities.isFileSystemCaseSensitive)).to.equal(true);
+		});
+
+		it("should return " + (process.platform !== "win32") + " on " + process.platform, function() {
+			expect(fileUtilities.isFileSystemCaseSensitive()).to.equal(process.platform !== "win32");
+			expect(fileUtilities.isFileSystemCaseSensitive(path.join(__dirname, "data/test.json"))).to.equal(process.platform !== "win32");
 		});
 	});
 });
