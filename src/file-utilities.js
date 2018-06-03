@@ -1,4 +1,5 @@
 var async = require("async");
+var path = require("path");
 var fs = require("fs");
 var md5File = require("md5-file");
 var utilities = require("extra-utilities");
@@ -52,6 +53,17 @@ fileUtilities.getFileInformation = function(filePath, callback) {
 			});
 		}
 	);
+};
+
+fileUtilities.isFileSystemCaseSensitive = function(filePath) {
+	if(utilities.isEmptyString(filePath)) {
+		filePath = __dirname;
+	}
+
+	var originalStats = fs.statSync(filePath);
+	var invertedStats = fs.statSync(path.join(path.dirname(filePath), changeCase.swap(path.basename(filePath))));
+
+	return utilities.isValid(originalStats) && utilities.isInvalid(invertedStats) && originalStats.ino === invertedStats.ino;
 };
 
 module.exports = fileUtilities;
