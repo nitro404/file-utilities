@@ -60,8 +60,22 @@ fileUtilities.isFileSystemCaseSensitive = function(filePath) {
 		filePath = __dirname;
 	}
 
-	var originalStats = fs.statSync(filePath);
-	var invertedStats = fs.statSync(path.join(path.dirname(filePath), changeCase.swap(path.basename(filePath))));
+	var originalStats = null;
+	var invertedStats = null;
+
+	try {
+		originalStats = fs.statSync(filePath);
+	}
+	catch(error) {
+		return null;
+	}
+
+	try {
+		invertedStats = fs.statSync(path.join(path.dirname(filePath), changeCase.swap(path.basename(filePath))));
+	}
+	catch(error) {
+		return error.code === "ENOENT" ? true : null;
+	}
 
 	return utilities.isValid(originalStats) && utilities.isInvalid(invertedStats) && originalStats.ino === invertedStats.ino;
 };
