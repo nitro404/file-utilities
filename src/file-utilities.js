@@ -1,5 +1,5 @@
 var async = require("async");
-var fs = require("fs-extra");
+var fs = require("fs");
 var md5File = require("md5-file");
 var utilities = require("extra-utilities");
 

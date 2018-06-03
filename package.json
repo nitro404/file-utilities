@@ -34,7 +34,6 @@
   "dependencies": {
     "async": "^2.6.1",
     "extra-utilities": "^1.2.14",
-    "fs-extra": "^5.0.0",
     "md5-file": "^3.2.3"
   },
   "devDependencies": {
