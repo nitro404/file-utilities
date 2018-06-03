@@ -41,8 +41,8 @@ describe("File Utilities", function() {
 				function(error, info) {
 					expect(error).to.equal(null);
 					expect(utilities.isObjectStrict(info)).to.equal(true);
-					expect(info.fileSize).to.equal(23);
-					expect(info.md5).to.equal("6f353c05ed3598733d1c7b9b0d5fdabb");
+					expect(info.fileSize).to.equal(20);
+					expect(info.md5).to.equal("e234fe35690be97fb8ecfefbf9cb7aeb");
 
 					return callback();
 				}
