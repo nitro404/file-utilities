@@ -11,7 +11,7 @@ A collection of useful file helper functions.
 ## Server-Side Usage
 
 ```javascript
-var fileUtilities = require("file-utilities");
+const fileUtilities = require("file-utilities");
 
 fileUtilities.getFileInformation(
 	"./data/test.txt",

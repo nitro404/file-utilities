@@ -1,12 +1,13 @@
 "use strict";
 
-var async = require("async");
-var path = require("path");
-var fs = require("fs");
-var md5File = require("md5-file");
-var utilities = require("extra-utilities");
+const async = require("async");
+const path = require("path");
+const fs = require("fs");
+const md5File = require("md5-file");
+const utilities = require("extra-utilities");
+const changeCase = require("change-case-bundled");
 
-var fileUtilities = { };
+const fileUtilities = { };
 
 fileUtilities.getFileInformation = function(filePath, callback) {
 	if(!utilities.isFunction(callback)) {
@@ -62,8 +63,8 @@ fileUtilities.isFileSystemCaseSensitive = function(filePath) {
 		filePath = __dirname;
 	}
 
-	var originalStats = null;
-	var invertedStats = null;
+	let originalStats = null;
+	let invertedStats = null;
 
 	try {
 		originalStats = fs.statSync(filePath);
@@ -73,9 +74,10 @@ fileUtilities.isFileSystemCaseSensitive = function(filePath) {
 	}
 
 	try {
-		invertedStats = fs.statSync(path.join(path.dirname(filePath), changeCase.swap(path.basename(filePath))));
+		invertedStats = fs.statSync(path.join(path.dirname(filePath), changeCase.swapCase(path.basename(filePath))));
 	}
 	catch(error) {
+		console.error(error);
 		return error.code === "ENOENT" ? true : null;
 	}
 

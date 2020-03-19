@@ -1,10 +1,10 @@
 "use strict";
 
-var fileUtilities = require("../dist/file-utilities.js");
-var utilities = require("extra-utilities");
-var path = require("path");
-var chai = require("chai");
-var expect = chai.expect;
+const fileUtilities = require("../src/file-utilities.js");
+const utilities = require("extra-utilities");
+const path = require("path");
+const chai = require("chai");
+const expect = chai.expect;
 
 describe("File Utilities", function() {
 	describe("getFileInformation", function() {
@@ -13,7 +13,7 @@ describe("File Utilities", function() {
 		});
 
 		it("should throw an error if no callback function is provided", function() {
-			var thrownError = null;
+			let thrownError = null;
 
 			try { fileUtilities.getFileInformation(); }
 			catch(error) { thrownError = error; }
