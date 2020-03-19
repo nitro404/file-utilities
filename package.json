@@ -1,8 +1,8 @@
 {
   "name": "file-utilities",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A collection of useful file helper functions.",
-  "main": "dist/file-utilities.js",
+  "main": "src/file-utilities.js",
   "scripts": {
     "build": "gulp build",
     "lint": "gulp lint",
