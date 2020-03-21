@@ -42,10 +42,6 @@ To build the distribution files for this module:
 ```bash
 npm run build
 ```
-or
-```bash
-gulp build
-```
 
 [npm-url]: https://www.npmjs.com/package/file-utilities
 [npm-version-image]: https://img.shields.io/npm/v/file-utilities.svg
