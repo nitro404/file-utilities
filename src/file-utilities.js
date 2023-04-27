@@ -24,6 +24,14 @@ fileUtilities.getFileInformation = function(filePath, callback) {
 				return fs.stat(
 					filePath,
 					function(error, stats) {
+						if(utilities.isInvalid(stats)) {
+							return callback(new Error("File does not exist."));
+						}
+
+						if(stats.isDirectory()) {
+							return callback(new Error("Path is directory."));
+						}
+
 						if(error) {
 							return callback(error);
 						}
@@ -33,26 +41,21 @@ fileUtilities.getFileInformation = function(filePath, callback) {
 				);
 			},
 			function(fileSize, callback) {
-				return md5File(
-					filePath,
-					function(error, hash) {
-						if(error) {
-							return callback(error);
-						}
-
-						return callback(null, fileSize, hash);
-					}
-				);
+				return md5File(filePath).then(function(md5Hash) {
+					return callback(null, fileSize, md5Hash);
+				}).catch(function(error) {
+					return callback(error);
+				});
 			}
 		],
-		function(error, fileSize, hash) {
+		function(error, fileSize, md5Hash) {
 			if(error) {
 				return callback(error);
 			}
 
 			return callback(null, {
 				fileSize: fileSize,
-				md5: hash
+				md5: md5Hash
 			});
 		}
 	);

@@ -1,6 +1,6 @@
 {
   "name": "file-utilities",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A collection of useful file helper functions.",
   "main": "src/file-utilities.js",
   "scripts": {
@@ -31,13 +31,13 @@
   },
   "homepage": "https://github.com/nitro404/file-utilities#readme",
   "dependencies": {
-    "async": "^3.2.0",
-    "extra-utilities": "^1.3.4",
-    "md5-file": "^4.0.0"
+    "async": "^3.2.4",
+    "extra-utilities": "^1.3.7",
+    "md5-file": "^5.0.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "change-case-bundled": "^1.0.3",
-    "gulp-fabricator": "^1.2.0"
+    "chai": "^4.3.7",
+    "change-case-bundled": "^1.1.4",
+    "gulp-fabricator": "^1.2.6"
   }
 }
